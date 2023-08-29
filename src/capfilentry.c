@@ -143,13 +143,13 @@ capfil_bool processTileInCatalog(const CapfilEntry *entry, TileCatalog *tileCata
 
     if(pictureSurface == NULL)
     {
-        fprintf(stderr, "Cannot open picture surface!\n");
+        fprintf(stderr, "Cannot open picture surface: %s\n", entry->filename);
         return FALSE;
     }
 
     if(pictureSurface->format->BitsPerPixel != 8)
     {
-        fprintf(stderr, "Picture surface should have 8 bits per pixel. Instead it has: %u\n", pictureSurface->format->BitsPerPixel);
+        fprintf(stderr, "Picture surface of: %s should have 8 bits per pixel. Instead it has: %u\n", entry->filename, pictureSurface->format->BitsPerPixel);
         SDL_FreeSurface(pictureSurface);
         return FALSE;
     }
